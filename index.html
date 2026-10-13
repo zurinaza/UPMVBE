@@ -733,6 +733,18 @@ table.t2{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55;bor
 .subsel{max-width:560px;font-size:15px;padding:11px 12px}
 .t3 td:first-child{min-width:240px}
 .t3 td{min-width:150px}
+/* developer credit */
+.cover-dev{display:block;margin:0 0 12px;color:#fff;font-size:13.5px;line-height:1.5}
+.devcard{display:flex;gap:18px;align-items:center;background:var(--card);border:2.5px solid var(--maroon);border-left:6px solid var(--maroon);border-radius:16px;padding:20px 22px;max-width:640px}
+.devmark{flex:none;width:64px;height:64px;border-radius:50%;background:#6F1A2E;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:.04em}
+.devname{font-family:var(--serif);font-size:21px;font-weight:600;margin:0 0 4px}
+.devaff{margin:0 0 6px;color:var(--muted);font-size:15px;line-height:1.5}
+.devmail{margin:0;font-size:15px}
+.devmail a,.raildev a{color:var(--maroon-2)}
+.raildev{display:block;margin-top:12px;padding-top:10px;border-top:1px solid var(--line-2);font-size:12px;line-height:1.5}
+.disc{border-top:1px solid var(--line);margin:22px 0 0;padding-top:14px;font-size:14.5px;color:var(--muted)}
+.disc b{color:var(--ink)}
+.printout .pdisc{margin-top:18pt;padding-top:8pt;border-top:1px solid #bbb;font-size:10pt;color:#333}
 
 </style>
 </head>
@@ -774,6 +786,7 @@ table.t2{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55;bor
       Discipline cluster: <b id="railDisc">not set</b><br>
       <span id="railSaved">Progress saves on this device.</span><br>
       <button class="themebtn" id="themeBtn">Switch to dark</button>
+      <span class="raildev">Developed by<br><b>Prof. Ts. Dr. Zurina Zainal Abidin</b><br><a href="mailto:zurina@upm.edu.my">zurina@upm.edu.my</a></span>
     </div>
   </nav>
 
@@ -813,16 +826,28 @@ table.t2{width:100%;border-collapse:collapse;font-size:15px;line-height:1.55;bor
     <h2><span class="n"></span> What you leave with</h2>
     <p class="intro">For one course, this semester. The planning stage builds them with you and keeps them on this device.</p>
     <div class="tw"><table class="t plain"><tbody>
-      <tr><td>The approach for your course, Infuse or Embed, as your programme decided it</td></tr>
+      <tr><td>The approach for your course, Infuse, Embed or Integrate, as your programme decided it</td></tr>
       <tr><td>One core value and one of its own sub-values, under Berilmu or Berbakti</td></tr>
-      <tr><td>A values-explicit lesson learning outcome (Embed), or what you will say in class (Infuse)</td></tr>
-      <tr><td>A T&amp;L activity, practised twice with feedback</td></tr>
-      <tr><td>An optional task brief and four-criterion rubric, if you assess the value</td></tr>
-      <tr><td>The VBE evidence record (Perekodan) and the LLO record for your course file</td></tr>
+      <tr><td>The outcome the value aligns with: a values-explicit LLO (Embed) or a CLO mapped to a PLO (Integrate). For Infuse, the infusion method and what you will say in class</td></tr>
+      <tr><td>A T&amp;L activity, practised twice with feedback (Embed and Integrate)</td></tr>
+      <tr><td>An assessment task and four-criterion rubric in which the value carries marks (Embed and Integrate)</td></tr>
+      <tr><td>The VBE evidence record (Perekodan), the alignment table and the list of evidence to keep in your course file</td></tr>
       <tr><td>The wording for your course outline</td></tr>
     </tbody></table></div>
     <div class="note"><b>Practical notes.</b> Set your discipline cluster in the Your field stage first; the quizzes use tasks from it. Quizzes can be retaken, and the questions are reshuffled each time. Your plan saves as you type, in this browser on this device only. Export it with <i>Print or save as PDF</i> or <i>Copy as text</i> before you finish.</div>
     <div class="videos hidden" id="videoBlock"></div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="n"></span> Developed by</h2>
+    <div class="devcard">
+      <div class="devmark" aria-hidden="true">ZZA</div>
+      <div>
+        <p class="devname">Prof. Ts. Dr. Zurina Zainal Abidin</p>
+        <p class="devaff">Department of Chemical and Environmental Engineering<br>Faculty of Engineering<br>Universiti Putra Malaysia</p>
+        <p class="devmail"><a href="mailto:zurina@upm.edu.my">zurina@upm.edu.my</a></p>
+      </div>
+    </div>
   </div>
 
   <div class="sec">
@@ -2336,6 +2361,7 @@ function renderBuild(){
     <ul class="evlist2 sup">${es.sup.map(e=>`<li><b>${esc(e[1])}</b><span>${esc(e[2])}</span></li>`).join("")}</ul>`);}
 
   html+=`<div class="reccard" id="bOut"></div>
+   <p class="disc"><b>Lecturer review required.</b> This plan was drafted with AI assistance in The Six (Plan your course). It must be read and edited by the lecturer before it is used with students.</p>
    <div class="btnrow" style="margin-top:16px"><button class="btn" id="bPrint">Print or save as PDF</button><button class="btn ghost" id="bCopy">Copy as text</button><button class="btn ghost" id="bReset">Start over</button></div>`;
   host.innerHTML=html;
   wireBuild(); paintOut(); paintProgress();
@@ -2593,6 +2619,7 @@ function courseText(){
       b.rubric.rows.forEach((r,i)=>{L.push((i+1)+". "+r.crit+" ["+ANCHOR[r.anchor]+"]"+(r.w?" ("+r.w+"%)":""));r.l.forEach((x,j)=>L.push("   "+(j+1)+": "+x));});
     } else L.push("Assessment: not assessed");
   }
+  L.push("","LECTURER REVIEW REQUIRED: This plan was drafted with AI assistance in The Six (Plan your course). It must be read and edited by the lecturer before it is used with students.");
   L.push("","EVIDENCE REQUIRED: "+(b.approach?evidSet().req.map(r=>r[1]).join("; "):"-"),"","COURSE OUTLINE WORDING",outlineSentence());
   return L.join("\n");
 }
@@ -2608,7 +2635,8 @@ function preparePrint(){
   ${assessed()&&b.rubric?`<h2>Assignment</h2><table>${row("Title",(b.brief.title||"")+(b.brief.weight?" \u00b7 "+b.brief.weight:""))}${row("Output",b.output)}${row("Situation",b.brief.situation)}${row("Your task",b.brief.task)}<tr><th>You must</th><td><ol>${b.brief.clauses.map((c,i)=>`<li>${e(c)} <i>(${ANCHOR[b.rubric.rows[i].anchor]})</i></li>`).join("")}</ol></td></tr>${row("Individual evidence",b.brief.individual)}</table>
   <h2>Rubric</h2><table><tr><th>Criterion</th><th>1 &#183; Emerging</th><th>2 &#183; Developing</th><th>3 &#183; Proficient</th><th>4 &#183; Transformative</th><th>Weight</th></tr>${b.rubric.rows.map(r=>`<tr><td><b>${e(r.crit)}</b><br><i>${ANCHOR[r.anchor]}</i></td>${r.l.map(x=>`<td>${e(x)}</td>`).join("")}<td>${e(r.w)}</td></tr>`).join("")}</table>`:""}`}
   <h2>Evidence required</h2><table>${b.approach?evidSet().req.map(r=>row(r[1],r[2])).join(""):""}</table>
-  <h2>Course outline wording</h2><p class="sentence">${e(outlineSentence())}</p>`;
+  <h2>Course outline wording</h2><p class="sentence">${e(outlineSentence())}</p>
+  <p class="pdisc"><b>Lecturer review required.</b> This plan was drafted with AI assistance in The Six (Plan your course). It must be read and edited by the lecturer before it is used with students.</p>`;
 }
 window.addEventListener("beforeprint",preparePrint);
 function copyText(t,msg){const done2=()=>toast(msg);
